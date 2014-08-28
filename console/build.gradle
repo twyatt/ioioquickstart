@@ -1,0 +1,23 @@
+apply plugin: "java"
+apply plugin: "application"
+
+sourceCompatibility = 1.6
+sourceSets.main.java.srcDirs = [ "src/" ]
+
+applicationName = 'ioioquickstart'
+mainClassName = "ioioquickstart.console.HelloIOIOConsole"
+
+jar {
+    baseName = applicationName
+    version = '1.0'
+
+    manifest {
+        attributes 'Main-Class': mainClassName
+    }
+}
+
+eclipse {
+    project {
+        name = appName + "-console"
+    }
+}

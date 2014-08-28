@@ -1,0 +1,78 @@
+buildscript {
+    repositories {
+        mavenCentral()
+        mavenLocal()
+    }
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:0.12.1+'
+    }
+}
+
+allprojects {
+    apply plugin: "eclipse"
+    apply plugin: "idea"
+
+    version = '1.0'
+    ext {
+        appName = 'ioioquickstart'
+        jnaVersion = '4.0.0'
+        purejavacommVersion = '0.0.21'
+    }
+
+    repositories {
+        mavenLocal()
+        mavenCentral()
+        maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
+        maven { url "https://oss.sonatype.org/content/repositories/releases/" }
+    }
+}
+
+project(":core") {
+    apply plugin: "java"
+
+    dependencies {
+        compile fileTree(dir: 'libs', include: '*.jar')
+    }
+}
+
+project(":console") {
+    apply plugin: "java"
+
+    repositories {
+        // purejavacomm
+        maven { url "http://www.sparetimelabs.com/maven2" }
+    }
+
+    dependencies {
+        compile project(":core")
+        compile "net.java.dev.jna:jna:$jnaVersion"
+        compile "com.sparetimelabs:purejavacomm:$purejavacommVersion"
+        compile fileTree(dir: 'libs', include: '*.jar')
+    }
+}
+
+project(":android") {
+    apply plugin: "android"
+
+    dependencies {
+        compile project(":core")
+
+        //compile "com.android.support:support-v4:20.0.+"
+        //compile "com.android.support:appcompat-v7:20.0.+"
+        //compile "com.android.support:gridlayout-v7:20.0.+"
+        //compile "com.android.support:mediarouter-v7:20.0.+"
+        //compile "com.android.support:support-v13:20.0.+"
+
+        compile fileTree(dir: '../core/libs', include: '*.jar')
+        compile fileTree(dir: 'libs', include: '*.jar')
+    }
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '1.10'
+}
+
+tasks.eclipse.doLast {
+    delete ".project"
+}
