@@ -6,7 +6,7 @@ Gradle is used to streamline the project setup process. The project can be impor
 
 ```bash
 $ cd console
-$ ../gradlew build
+$ ../gradlew distZip
 ```
 
 * ZIP file will be located in `build/distributions`.
@@ -31,6 +31,6 @@ Replace `PATH_TO_ANDROID_SDK` with the location where you have the Android SDK i
 
 When using a minimum Android SDK version < API 11 the Android Support Libraries need to be utilized. Unfortunately this caused errors related to resource not found `Theme.AppCompat.Light` when using Gradle to import the project.
 
-If there is a need to target an Android SDK version < API 11 then the Android [Support Library](http://developer.android.com/tools/support-library/index.html) page should be consulted and the appropriate support library dependencies configured in the root project's `build.gradle` file and the necessary pacakges are installed in the Android SDK Manager:
+If there is a need to target an Android SDK version < API 11 then the Android [Support Library](http://developer.android.com/tools/support-library/index.html) page should be consulted and the appropriate support library dependencies configured in the root project's `build.gradle` file. Also check that the necessary packages are installed in the Android SDK Manager:
 
 ![Android SDK Manager](android_sdk_manager.jpg)
