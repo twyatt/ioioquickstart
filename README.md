@@ -11,6 +11,8 @@ $ ../gradlew distZip
 
 * ZIP file will be located in `build/distributions`.
 
+Project is packaged with the IOIO library ([App-IOIO0504](https://github.com/ytai/ioio/wiki/Downloads#client-software-and-ioio-application-firmware-images)).
+
 
 # Troubleshooting
 
